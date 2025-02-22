@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework.authtoken',  # Agregar la app de autenticación de Django REST Framework
+    'drf_spectacular',           # Agregar la app de documentación de Django REST Framework
+    'rest-framework',  # Agregar la app de Django REST Framework
+    'api',             # Agregar la app de nuestro proyecto
 ]
 
 MIDDLEWARE = [
@@ -128,3 +132,33 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',),
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'API de tareas',
+    'DESCRIPTION': 'API para gestionar tareas',
+    'VERSION': '1.0.0',
+    'CONTACT': {
+        'name': 'Dave González',
+        'email': 'dave.gonzalez@gmail.com',
+    },
+    'SWAGER_UI_SETTINGS': {
+        'persistAuthorization': True,
+    },
+}
+
+SIMPLE_JWT = {
+    'ALGORITHM': 'HS256',
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+    'JTI_CLAIM': 'jti',
+    'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
+}
