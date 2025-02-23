@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework.authtoken',  # Agregar la app de autenticación de Django REST Framework
     'drf_spectacular',           # Agregar la app de documentación de Django REST Framework
-    'rest-framework',  # Agregar la app de Django REST Framework
+    'rest_framework',  # Agregar la app de Django REST Framework
     'api',             # Agregar la app de nuestro proyecto
 ]
 

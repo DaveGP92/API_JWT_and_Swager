@@ -2,16 +2,16 @@
 FROM python:3.11.0-buster
 
 # Establecemos el directorio de trabajo dentro del contenedor
-WORKDIR /app
+WORKDIR /django-app
 
 # Copiamos el archivo de dependencias al contenedor
-COPY requirements.txt /app/
+COPY requirements.txt /django-app/
 
 # Instalamos las dependencias
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiamos el resto de la aplicación al contenedor
-COPY . /app/
+COPY . /django-app/
 
 # Exponemos el puerto donde la app estará corriendo (usualmente el 8000 para Django)
 EXPOSE 8000
