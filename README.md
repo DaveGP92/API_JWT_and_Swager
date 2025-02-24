@@ -8,6 +8,13 @@
 # Swagger
 
 - acceder a la ruta api-v1/schema/swagger/ para interactuar con Swagger UI
+
+# Schema
+
+- Descargar schema api-v1/schema/
+
+# Token
+
 - obtener token /api-v1/token/ (pide credenciales de auth_user)
 - refrescar token /api-v1/token/refresh/
 - verificar token /api-v1/token/verify/
