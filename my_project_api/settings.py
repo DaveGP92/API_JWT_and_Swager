@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,10 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-p)q*1y_h&!w39h887b)!ru3emgv)!f)r!=(9n6glj8gsyxfg)5'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+ENVIRONMENT = config('ENVIRONMENT', default='development')
 
-ALLOWED_HOSTS = []
+DEBUG = config('DEBUG', default=False, cast=bool)
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: v.split(','))
 
 
 # Application definition
@@ -80,11 +82,11 @@ WSGI_APPLICATION = 'my_project_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # Usar el backend de MySQL
-        'NAME': 'proyecto_api_jwt',           # Nombre de la base de datos
-        'USER': 'root',                       # Usuario de la base de datos
-        'PASSWORD': '',                       # Contraseña (vacía en tu caso)
-        'HOST': 'db',                         # Nombre del servicio en docker-compose
-        'PORT': '3306',                       # Puerto de MySQL
+        'NAME': config('DB_NAME', default='proyecto_api_jwt'),         # Nombre de la base de datos
+        'USER': config('DB_USER', default='root'),     # Usuario de la base de datos
+        'PASSWORD': config('DB_PASSWORD', default=''),                   # Contraseña
+        'HOST': config('DB_HOST', default='db'),                         # Nombre del servicio endocker-compose
+        'PORT': config('DB_PORT', default='3306'),                       # Puerto de MySQL
         'OPTIONS': {
             'charset': 'utf8mb4',            # Opcional: para soportar caracteres especiales
         },

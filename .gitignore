@@ -33,3 +33,6 @@ docker-compose.prod.yml
 
 # Archivos de VS Code
 .vscode/
+
+#variables de entorno
+.env
