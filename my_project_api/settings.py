@@ -27,7 +27,7 @@ ENVIRONMENT = config('ENVIRONMENT', default='development')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: v.split(','))
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=lambda v: v.split(','))
 
 
 # Application definition
@@ -82,11 +82,11 @@ WSGI_APPLICATION = 'my_project_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # Usar el backend de MySQL
-        'NAME': config('DB_NAME', default='proyecto_api_jwt'),         # Nombre de la base de datos
-        'USER': config('DB_USER', default='root'),     # Usuario de la base de datos
-        'PASSWORD': config('DB_PASSWORD', default=''),                   # Contraseña
-        'HOST': config('DB_HOST', default='db'),                         # Nombre del servicio endocker-compose
-        'PORT': config('DB_PORT', default='3306'),                       # Puerto de MySQL
+        'NAME': config('MYSQL_DATABASE', default='proyecto_api_jwt'),         # Nombre de la base de datos
+        'USER': config('MYSQL_USER', default='root'),     # Usuario de la base de datos
+        'PASSWORD': config('MYSQL_PASSWORD', default=''),                   # Contraseña
+        'HOST': config('MYSQL_HOST', default='db'),                         # Nombre del servicio endocker-compose
+        'PORT': config('MYSQL_PORT', default='3306', cast=int),                       # Puerto de MySQL
         'OPTIONS': {
             'charset': 'utf8mb4',            # Opcional: para soportar caracteres especiales
         },
@@ -128,7 +128,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = '/app/static'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/app/media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

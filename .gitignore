@@ -23,10 +23,6 @@ build/
 .DS_Store
 Thumbs.db
 
-# Archivos de Docker
-docker-compose.override.yml
-docker-compose.prod.yml
-
 # Archivos de Python
 *.py[cod]
 *$py.class
