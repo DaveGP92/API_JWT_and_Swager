@@ -5,6 +5,10 @@
 - *docker compose stop* -> detener contenedores
 - *docker compose down* -> borrar contenedores
 
+# API
+
+- Crear un super usuario para acceder a los accesos JWT -> python manage.py createsuperuser
+
 # Swagger
 
 - acceder a la ruta api-v1/schema/swagger/ para interactuar con Swagger UI
