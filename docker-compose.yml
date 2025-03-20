@@ -3,7 +3,7 @@ services:
     image: mysql:8.0
     restart: always
     env_file:
-      - .env.development
+      - .env
     ports:
       - "3306:3306"
     volumes:
@@ -15,7 +15,7 @@ services:
     build: .
     restart: always
     env_file:
-      - .env.development
+      - .env
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/django-app
