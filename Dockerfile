@@ -5,17 +5,17 @@ FROM python:3.11.0-buster
 EXPOSE 8000
 
 # Establecemos el directorio de trabajo dentro del contenedor
-WORKDIR /django-app
+WORKDIR /app
 
 # Copiamos el archivo de dependencias al contenedor
-COPY requirements.txt /django-app/
+COPY requirements.txt /app/
 
 # Instalamos las dependencias
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiamos el resto de la aplicación al contenedor
-COPY . /django-app/
+COPY . /app/
 
 
 # Ejecutamos el servidor de desarrollo de Django
