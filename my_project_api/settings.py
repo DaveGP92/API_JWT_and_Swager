@@ -7,7 +7,7 @@ For more information on this file, see
 https://docs.djangoproject.com/en/5.1/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/5.1/ref/settings/
+https://docs.djangoproject.com/en/5.1/ref/settings/ 
 """
 
 from pathlib import Path
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware', 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -78,6 +78,7 @@ WSGI_APPLICATION = 'my_project_api.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
 
 DATABASES = {
     'default': {
